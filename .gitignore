@@ -1,0 +1,8 @@
+*.out
+*.lst
+*.s
+*.cpp
+*.txt
+
+__pycache__/
+memo/

@@ -1,0 +1,162 @@
+{
+    // tasks.json 形式の詳細についての資料は、
+    // https://go.microsoft.com/fwlink/?LinkId=733558 をご覧ください
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build kyopro C++14",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-O0",
+                "-ggdb3",
+                "-Wall",
+                "-Wextra",
+                "-std=gnu++14",
+                "-fsanitize=undefined,address",
+                "-fno-omit-frame-pointer",
+                "-I",
+                "${workspaceFolder}/ac-library",
+                "${file}"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "build kyopro C++14 (file io)",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-O0",
+                "-ggdb3",
+                "-Wall",
+                "-Wextra",
+                "-std=gnu++14",
+                "-fsanitize=undefined,address",
+                "-fno-omit-frame-pointer",
+                "-DFILEINPUT",
+                "-DFILEOUTPUT",
+                "-I",
+                "${workspaceFolder}/ac-library",
+                "${file}"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "build kyopro C++14 (optimize)",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-O2",
+                "-ggdb3",
+                "-Wall",
+                "-Wextra",
+                "-std=gnu++14",
+                "-I",
+                "${workspaceFolder}/ac-library",
+                "${file}"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "build kyopro C++14 (optimize, file io)",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-O2",
+                "-ggdb3",
+                "-Wall",
+                "-Wextra",
+                "-std=gnu++14",
+                "-DFILEINPUT",
+                "-DFILEOUTPUT",
+                "-I",
+                "${workspaceFolder}/ac-library",
+                "${file}"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "build kyopro C++17",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-O0",
+                "-ggdb3",
+                "-Wall",
+                "-Wextra",
+                "-std=gnu++17",
+                "-fsanitize=undefined,address",
+                "-fno-omit-frame-pointer",
+                "-I",
+                "${workspaceFolder}/ac-library",
+                "${file}"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "build kyopro C++17 (file io)",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-O0",
+                "-ggdb3",
+                "-Wall",
+                "-Wextra",
+                "-std=gnu++17",
+                "-fsanitize=undefined,address",
+                "-fno-omit-frame-pointer",
+                "-DFILEINPUT",
+                "-DFILEOUTPUT",
+                "-I",
+                "${workspaceFolder}/ac-library",
+                "${file}",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "build kyopro C++17 (optimize)",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-O2",
+                "-ggdb3",
+                "-Wall",
+                "-Wextra",
+                "-std=gnu++17",
+                "-I",
+                "${workspaceFolder}/ac-library",
+                "${file}"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "build kyopro C++17 (optimize, file io)",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-O2",
+                "-ggdb3",
+                "-Wall",
+                "-Wextra",
+                "-std=gnu++17",
+                "-DFILEINPUT",
+                "-DFILEOUTPUT",
+                "-I",
+                "${workspaceFolder}/ac-library",
+                "${file}"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}

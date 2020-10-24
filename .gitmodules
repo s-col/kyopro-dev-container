@@ -1,0 +1,6 @@
+[submodule "kyopro-library"]
+	path = kyopro-library
+	url = https://github.com/s-col/kyopro-library.git
+[submodule "ac-library"]
+	path = ac-library
+	url = https://github.com/atcoder/ac-library.git
