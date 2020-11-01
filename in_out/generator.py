@@ -10,8 +10,9 @@ fp = open(FILE_PATH, 'w', encoding="utf-8")
 sys.stdout = fp
 
 ##################################################
-N = 1000000
-M = 1000000
-print(N, M)
-print(" ".join([str(random.randint(0,10)) for _ in range(N)]))
-print(" ".join([str(random.randint(0,10)) for _ in range(M)]))
+N = 2000
+print(N)
+for _ in range(N):
+    a1 = random.randint(-1000, 1000)
+    a2 = random.randint(-1000, 1000)
+    print(a1, a2)
