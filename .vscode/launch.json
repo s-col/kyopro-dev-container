@@ -4,33 +4,33 @@
     // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Launch",
-            "program": "${workspaceFolder}/a.out",
-            "args": [],
-            "cwd": "${workspaceFolder}"
-        },
         // {
-        //     "name": "(gdb) Launch",
-        //     "type": "cppdbg",
+        //     "type": "lldb",
         //     "request": "launch",
-        //     "program": "${workspaceRoot}/a.out",
+        //     "name": "Launch",
+        //     "program": "${workspaceFolder}/a.out",
         //     "args": [],
-        //     "stopAtEntry": false,
-        //     "cwd": "${workspaceFolder}",
-        //     "environment": [],
-        //     "externalConsole": false,
-        //     "MIMode": "gdb",
-        //     "miDebuggerPath": "/usr/bin/gdb",
-        //     "setupCommands": [
-        //         {
-        //             "description": "gdb の再フォーマットを有効にする",
-        //             "text": "-enable-pretty-printing",
-        //             "ignoreFailures": true
-        //         }
-        //     ]
-        // }
+        //     "cwd": "${workspaceFolder}"
+        // },
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/a.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "gdb の再フォーマットを有効にする",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
     ]
 }

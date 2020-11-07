@@ -15,6 +15,7 @@
                 "-std=gnu++14",
                 "-fsanitize=undefined,address",
                 "-fno-omit-frame-pointer",
+                "-DSCOLDEBUG",
                 "-I",
                 "${workspaceFolder}/ac-library",
                 "${file}"
@@ -34,6 +35,7 @@
                 "-std=gnu++14",
                 "-fsanitize=undefined,address",
                 "-fno-omit-frame-pointer",
+                "-DSCOLDEBUG",
                 "-DFILEINPUT",
                 "-DFILEOUTPUT",
                 "-I",
@@ -81,6 +83,26 @@
         },
         {
             "type": "shell",
+            "label": "build kyopro C++14 (optimize, file io, debug)",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-O2",
+                "-ggdb3",
+                "-Wall",
+                "-Wextra",
+                "-std=gnu++14",
+                "-DSCOLDEBUG",
+                "-DFILEINPUT",
+                "-DFILEOUTPUT",
+                "-I",
+                "${workspaceFolder}/ac-library",
+                "${file}"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
             "label": "build kyopro C++17",
             "command": "/usr/bin/g++",
             "args": [
@@ -91,6 +113,7 @@
                 "-std=gnu++17",
                 "-fsanitize=undefined,address",
                 "-fno-omit-frame-pointer",
+                "-DSCOLDEBUG",
                 "-I",
                 "${workspaceFolder}/ac-library",
                 "${file}"
@@ -110,6 +133,7 @@
                 "-std=gnu++17",
                 "-fsanitize=undefined,address",
                 "-fno-omit-frame-pointer",
+                "-DSCOLDEBUG",
                 "-DFILEINPUT",
                 "-DFILEOUTPUT",
                 "-I",
@@ -149,6 +173,26 @@
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++17",
+                "-DFILEINPUT",
+                "-DFILEOUTPUT",
+                "-I",
+                "${workspaceFolder}/ac-library",
+                "${file}"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "build kyopro C++17 (optimize, file io, debug)",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-O2",
+                "-ggdb3",
+                "-Wall",
+                "-Wextra",
+                "-std=gnu++17",
+                "-DSCOLDEBUG",
                 "-DFILEINPUT",
                 "-DFILEOUTPUT",
                 "-I",
