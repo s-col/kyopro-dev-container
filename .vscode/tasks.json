@@ -9,7 +9,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-O0",
-                "-ggdb3",
+                "-g3",
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++14",
@@ -29,7 +29,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-O0",
-                "-ggdb3",
+                "-g3",
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++14",
@@ -51,7 +51,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-O2",
-                "-ggdb3",
+                "-g3",
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++14",
@@ -68,7 +68,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-O2",
-                "-ggdb3",
+                "-g3",
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++14",
@@ -87,7 +87,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-O2",
-                "-ggdb3",
+                "-g3",
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++14",
@@ -107,7 +107,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-O0",
-                "-ggdb3",
+                "-g3",
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++17",
@@ -127,7 +127,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-O0",
-                "-ggdb3",
+                "-g3",
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++17",
@@ -152,7 +152,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-O2",
-                "-ggdb3",
+                "-g3",
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++17",
@@ -169,7 +169,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-O2",
-                "-ggdb3",
+                "-g3",
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++17",
@@ -188,7 +188,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-O2",
-                "-ggdb3",
+                "-g3",
                 "-Wall",
                 "-Wextra",
                 "-std=gnu++17",

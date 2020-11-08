@@ -4,14 +4,14 @@
     // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        // {
-        //     "type": "lldb",
-        //     "request": "launch",
-        //     "name": "Launch",
-        //     "program": "${workspaceFolder}/a.out",
-        //     "args": [],
-        //     "cwd": "${workspaceFolder}"
-        // },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "(lldb) Launch",
+            "program": "${workspaceFolder}/a.out",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
         {
             "name": "(gdb) Launch",
             "type": "cppdbg",
