@@ -208,5 +208,14 @@
 			"template <typename T>",
 			"using WeightedGraph = std::vector<std::vector<WeightedEdge<T>>>;",
 		]
+	},
+	// グリッド関係
+	"Step4": {
+		"prefix": "step4",
+		"body": "constexpr Pii step[4] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};"
+	},
+	"Step8": {
+		"prefix": "step8",
+		"body": "constexpr Pii step[8] = {{1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}, {0, -1}, {1, -1}};"
 	}
 }
