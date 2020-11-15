@@ -16,6 +16,13 @@
         "complex": "cpp",
         "*.tcc": "cpp",
         "iosfwd": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "bitset": "cpp",
+        "condition_variable": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "future": "cpp",
+        "string_view": "cpp",
+        "type_traits": "cpp"
     },
 }
