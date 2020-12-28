@@ -45,7 +45,7 @@
 			"    return false;",
 			"}",
 			"",
-			"template <ostream& os = std::cout>",
+			"template <std::ostream& os = std::cout>",
 			"class Prints {",
 			"private:",
 			"    class __Prints {",
