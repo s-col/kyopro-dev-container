@@ -192,12 +192,12 @@
 		]
 	},
 	// Graph
-	"Graph": {
-		"prefix": "Graph",
+	"Using_Graph": {
+		"prefix": "using Graph",
 		"body": "using Graph = std::vector<std::vector<int>>;"
 	},
-	"WeightedGraph": {
-		"prefix": "WeightedGraph",
+	"Using_WeightedGraph": {
+		"prefix": "using WeightedGraph",
 		"body": [
 			"template <typename T>",
 			"struct WeightedEdge {",
