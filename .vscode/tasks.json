@@ -18,6 +18,8 @@
                 "-DSCOLDEBUG",
                 "-I",
                 "${workspaceFolder}/ac-library",
+                "-I",
+                "${workspaceFolder}",
                 "${file}"
             ],
             "group": "build",
@@ -40,6 +42,8 @@
                 "-DFILEOUTPUT",
                 "-I",
                 "${workspaceFolder}/ac-library",
+                "-I",
+                "${workspaceFolder}",
                 "${file}"
             ],
             "group": "build",
@@ -57,6 +61,8 @@
                 "-std=gnu++14",
                 "-I",
                 "${workspaceFolder}/ac-library",
+                "-I",
+                "${workspaceFolder}",
                 "${file}"
             ],
             "group": "build",
@@ -76,6 +82,8 @@
                 "-DFILEOUTPUT",
                 "-I",
                 "${workspaceFolder}/ac-library",
+                "-I",
+                "${workspaceFolder}",
                 "${file}"
             ],
             "group": "build",
@@ -96,6 +104,8 @@
                 "-DFILEOUTPUT",
                 "-I",
                 "${workspaceFolder}/ac-library",
+                "-I",
+                "${workspaceFolder}",
                 "${file}"
             ],
             "group": "build",
@@ -116,6 +126,8 @@
                 "-DSCOLDEBUG",
                 "-I",
                 "${workspaceFolder}/ac-library",
+                "-I",
+                "${workspaceFolder}",
                 "${file}"
             ],
             "group": "build",
@@ -138,6 +150,8 @@
                 "-DFILEOUTPUT",
                 "-I",
                 "${workspaceFolder}/ac-library",
+                "-I",
+                "${workspaceFolder}",
                 "${file}",
             ],
             "group": {
@@ -158,6 +172,8 @@
                 "-std=gnu++17",
                 "-I",
                 "${workspaceFolder}/ac-library",
+                "-I",
+                "${workspaceFolder}",
                 "${file}"
             ],
             "group": "build",
@@ -177,6 +193,8 @@
                 "-DFILEOUTPUT",
                 "-I",
                 "${workspaceFolder}/ac-library",
+                "-I",
+                "${workspaceFolder}",
                 "${file}"
             ],
             "group": "build",
@@ -197,6 +215,8 @@
                 "-DFILEOUTPUT",
                 "-I",
                 "${workspaceFolder}/ac-library",
+                "-I",
+                "${workspaceFolder}",
                 "${file}"
             ],
             "group": "build",
