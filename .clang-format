@@ -2,8 +2,6 @@ BasedOnStyle: Google
 AllowShortBlocksOnASingleLine: true
 AllowShortCaseLabelsOnASingleLine: true
 BreakBeforeBraces: Custom
-BraceWrapping:
-    BeforeElse: true
 IndentWidth: 4
 AccessModifierOffset: -4
 ColumnLimit: 0
