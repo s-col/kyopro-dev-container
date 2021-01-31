@@ -3,6 +3,7 @@
 *.s
 *.cpp
 *.txt
+*.o
 
 __pycache__/
 memo/
