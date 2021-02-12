@@ -87,4 +87,7 @@
         "typeinfo": "cpp",
         "variant": "cpp"
     },
+    "python.analysis.extraPaths": [
+        "/home/ryo/.pyenv/versions/3.8.5/lib/python3.8/site-packages/"
+    ],
 }

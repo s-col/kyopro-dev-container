@@ -1,6 +1,9 @@
 BasedOnStyle: Google
 AllowShortBlocksOnASingleLine: true
 AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
 BreakBeforeBraces: Custom
 IndentWidth: 4
 AccessModifierOffset: -4
