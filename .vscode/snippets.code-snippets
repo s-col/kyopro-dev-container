@@ -240,5 +240,24 @@
 	"Step8": {
 		"prefix": "step8",
 		"body": "constexpr Pii step[8] = {{1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}, {0, -1}, {1, -1}};"
-	}
+	},
+	// 線形篩
+	"Sieve": {
+		"prefix": "sieve",
+		"body": [
+			"constexpr int LIM = 100000;",
+			"std::vector<int> mpf(LIM + 1);",
+			"std::vector<int> primes;",
+			"for (int i = 2; i <= LIM; i++) {",
+			"    if (mpf[i] == 0) {",
+			"        mpf[i] = i;",
+			"        primes.emplace_back(i);",
+			"    }",
+			"    for (const auto& p : primes) {",
+			"        if (i * p > LIM || p > mpf[i]) break;",
+			"        mpf[i * p] = p;",
+			"    }",
+			"}",
+		],
+	},
 }
