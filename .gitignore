@@ -5,6 +5,7 @@
 *.txt
 *.o
 
+include/
 __pycache__/
 memo/
 in_out/
