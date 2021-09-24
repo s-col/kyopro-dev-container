@@ -1,12 +1,12 @@
 BasedOnStyle: Google
-AllowShortBlocksOnASingleLine: true
-AllowShortCaseLabelsOnASingleLine: true
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: All
-AllowShortIfStatementsOnASingleLine: true
-AllowShortLoopsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
 BreakBeforeBraces: Custom
 IndentWidth: 4
 AccessModifierOffset: -4
-ColumnLimit: 0
+ColumnLimit: 100
 MaxEmptyLinesToKeep: 4
 KeepEmptyLinesAtTheStartOfBlocks: true
