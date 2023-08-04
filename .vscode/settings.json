@@ -1,12 +1,7 @@
 {
     // C++
     "editor.formatOnSave": true,
-    "C_Cpp.intelliSenseEngine": "Default",
-    // Python
-    "python.formatting.autopep8Args": [
-        "--max-line-length",
-        "120",
-    ],
+    "C_Cpp.intelliSenseEngine": "default",
     // etc
     "files.associations": {
         "cmath": "cpp",
@@ -96,9 +91,4 @@
         "semaphore": "cpp",
         "syncstream": "cpp"
     },
-    "cmake.configureOnOpen": false,
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "python.formatting.provider": "none",
 }
