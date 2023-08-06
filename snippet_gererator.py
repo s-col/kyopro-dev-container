@@ -1,4 +1,4 @@
-TARGET = "./code/misc.cpp"
+TARGET = "./src/A.cpp"
 FILENAME = "snippet_result.txt"
 
 trans = str.maketrans({'"': '\\"', "'": "\\'", "\\": "\\\\"})

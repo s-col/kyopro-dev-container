@@ -89,6 +89,13 @@
         "barrier": "cpp",
         "latch": "cpp",
         "semaphore": "cpp",
-        "syncstream": "cpp"
+        "syncstream": "cpp",
+        "expected": "cpp",
+        "spanstream": "cpp",
+        "stacktrace": "cpp"
     },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none",
 }

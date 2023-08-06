@@ -12,8 +12,8 @@
             "defines": [],
             "compilerPath": "/usr/bin/g++",
             "cStandard": "gnu11",
-            "cppStandard": "gnu++17",
-            "intelliSenseMode": "gcc-x64",
+            "cppStandard": "gnu++23",
+            "intelliSenseMode": "linux-gcc-x64",
             "browse": {
                 "path": [
                     "${workspaceFolder}",
