@@ -6,7 +6,7 @@
         {
             "type": "shell",
             "label": "build kyopro C++23",
-            "command": "/usr/bin/g++",
+            "command": "/usr/bin/g++-12",
             "args": [
                 "-O0",
                 "-g3",
@@ -27,7 +27,7 @@
         {
             "type": "shell",
             "label": "build kyopro C++23 (file io)",
-            "command": "/usr/bin/g++",
+            "command": "/usr/bin/g++-12",
             "args": [
                 "-O0",
                 "-g3",
@@ -53,7 +53,7 @@
         {
             "type": "shell",
             "label": "build kyopro C++23 (optimize)",
-            "command": "/usr/bin/g++",
+            "command": "/usr/bin/g++-12",
             "args": [
                 "-O2",
                 "-g3",
@@ -71,7 +71,7 @@
         {
             "type": "shell",
             "label": "build kyopro C++23 (optimize, file io)",
-            "command": "/usr/bin/g++",
+            "command": "/usr/bin/g++-12",
             "args": [
                 "-O2",
                 "-g3",
@@ -91,7 +91,7 @@
         {
             "type": "shell",
             "label": "build kyopro C++23 (optimize, file io, debug)",
-            "command": "/usr/bin/g++",
+            "command": "/usr/bin/g++-12",
             "args": [
                 "-O2",
                 "-g3",
