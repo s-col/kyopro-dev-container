@@ -34,28 +34,19 @@ RUN curl https://pyenv.run | bash && \
     pyenv install $latest_python && \
     pyenv global $latest_python
 
-RUN git clone --recursive https://github.com/s-col/kyopro_ubuntu.git ~/procon
-
-WORKDIR /root/procon
+# RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+# ENV PATH="/root/.cargo/bin:${PATH}"
 
 RUN echo 'export ASAN_OPTIONS=detect_leaks=0' >> ~/.bashrc && \
-    mkdir -p in_out src include/bits/stdc++.h.gch && \
-    touch in_out/{input,output}.txt src/{A,B,C,D,E,F,G,H,I,misc}.cpp && \
-    touch make_gch.cpp && \
-    echo '#include <bits/stdc++.h>' >> make_gch.cpp && \
+    echo '#include <bits/stdc++.h>' >> /tmp/precompile_header.hpp && \
+    mkdir -p /usr/local/include/procon_gch/bits/stdc++.h.gch/ && \
     g++-12 -O0 -g3 -Wall -Wextra -std=gnu++23 -fsanitize=undefined,address -fno-omit-frame-pointer \
     -DSCOLDEBUG -DFILEINPUT -DFILEOUTPUT \
-    -I/home/scol/dev/kyopro/kyopro_ubuntu/include \
-    -I/home/scol/dev/kyopro/kyopro_ubuntu/ac-library \
-    -I/home/scol/dev/kyopro/kyopro_ubuntu \
     -x c++-header \
-    make_gch.cpp \
-    -o include/bits/stdc++.h.gch/g++12_gnu++23.gch && \
+    /tmp/precompile_header.hpp \
+    -o /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23.gch && \
+    echo '#include <bits/stdc++.h>' | \
     g++-12 -O2 -g3 -Wall -Wextra -std=gnu++23 -DFILEINPUT -DFILEOUTPUT \
-    -I/home/scol/dev/kyopro/kyopro_ubuntu/include \
-    -I/home/scol/dev/kyopro/kyopro_ubuntu/ac-library \
-    -I/home/scol/dev/kyopro/kyopro_ubuntu \
     -x c++-header \
-    make_gch.cpp \
-    -o include/bits/stdc++.h.gch/g++12_gnu++23_optim.gch && \
-    rm make_gch.cpp
+    /tmp/precompile_header.hpp \
+    -o /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23_optim.gch
