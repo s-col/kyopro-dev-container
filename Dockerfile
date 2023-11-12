@@ -2,13 +2,18 @@ FROM ubuntu:22.04
 
 SHELL [ "/bin/bash", "-c" ]
 
+# リポジトリを日本のミラーサーバーに変更
 RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list
+
+# タイムアウト防止
+RUN echo -e "Acquire::http::Timeout \"300\";\nAcquire::ftp::Timeout \"300\";" >> /etc/apt/apt.conf.d/99timeout
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     g++-12 \
     gdb \
+    time \
     libboost-dev \
     libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev curl \
@@ -20,6 +25,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Python を Pyenv でインストール
 RUN curl https://pyenv.run | bash && \
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc && \
     echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc && \
@@ -37,7 +43,9 @@ RUN curl https://pyenv.run | bash && \
 # RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 # ENV PATH="/root/.cargo/bin:${PATH}"
 
-RUN echo 'export ASAN_OPTIONS=detect_leaks=0' >> ~/.bashrc && \
+# 競プロで必要な設定などを実行
+RUN echo 'alias ttt='\''/usr/bin/time -f "time result\ncmd:%C\nreal %es\nuser %Us \nsys  %Ss \nmemory:%MKB \ncpu %P"'\' >> ~/.bashrc && \
+    echo 'export ASAN_OPTIONS=detect_leaks=0' >> ~/.bashrc && \
     echo '#include <bits/stdc++.h>' >> /tmp/precompile_header.hpp && \
     mkdir -p /usr/local/include/procon_gch/bits/stdc++.h.gch/ && \
     g++-12 -O0 -g3 -Wall -Wextra -std=gnu++23 -fsanitize=undefined,address -fno-omit-frame-pointer \
