@@ -20,6 +20,8 @@
 			"using namespace std;",
 			"",
 			"using ll = long long;",
+			"using ui = unsigned int;",
+			"using ull = unsigned long long;",
 			"using Vi = std::vector<int>;",
 			"using Vl = std::vector<ll>;",
 			"using Pii = std::pair<int, int>;",

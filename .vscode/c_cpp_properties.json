@@ -4,7 +4,6 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}",
-                "${workspaceFolder}/include",
                 "${workspaceFolder}/ac-library",
                 "/usr/local/include",
                 "/usr/include"
