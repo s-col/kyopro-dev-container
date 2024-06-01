@@ -9,3 +9,5 @@ include/
 __pycache__/
 memo/
 in_out/
+
+/test/

@@ -25,6 +25,33 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# 競プロで必要な設定などを実行
+RUN echo 'alias ttt='\''/usr/bin/time -f "time result\ncmd:%C\nreal %es\nuser %Us \nsys  %Ss \nmemory:%MKB \ncpu %P"'\' >> ~/.bashrc && \
+    echo 'export ASAN_OPTIONS=detect_leaks=0' >> ~/.bashrc && \
+    echo '#include <bits/stdc++.h>' >> /tmp/precompile_header.hpp && \
+    mkdir -p /usr/local/include/procon_gch/bits/stdc++.h.gch/ && \
+    g++-12 -O0 -g3 -Wall -Wextra -std=gnu++23 -fsanitize=undefined,address -fno-omit-frame-pointer \
+    -DSCOLDEBUG -DFILEINPUT -DFILEOUTPUT \
+    -x c++-header \
+    /tmp/precompile_header.hpp \
+    -o /tmp/g++12_gnu++23.gch && \
+    mv /tmp/g++12_gnu++23.gch /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23.gch && \
+    echo '#include <bits/stdc++.h>' | \
+    g++-12 -O2 -g3 -Wall -Wextra -std=gnu++23 -DFILEINPUT -DFILEOUTPUT \
+    -x c++-header \
+    /tmp/precompile_header.hpp \
+    -o /tmp/g++12_gnu++23_optim.gch && \
+    mv /tmp/g++12_gnu++23_optim.gch /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23_optim.gch
+
+# ユーザを作成
+ARG USERNAME="procon"
+ARG GROUPNAME="procon"
+ARG UID=1000
+ARG GID=1000
+RUN groupadd -g $GID $GROUPNAME && \
+    useradd -m -s /bin/bash -u $UID -g $GID $USERNAME
+USER $USERNAME
+
 # Python を Pyenv でインストール
 RUN curl https://pyenv.run | bash && \
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc && \
@@ -41,20 +68,5 @@ RUN curl https://pyenv.run | bash && \
     pyenv global $latest_python
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
 
-# 競プロで必要な設定などを実行
-RUN echo 'alias ttt='\''/usr/bin/time -f "time result\ncmd:%C\nreal %es\nuser %Us \nsys  %Ss \nmemory:%MKB \ncpu %P"'\' >> ~/.bashrc && \
-    echo 'export ASAN_OPTIONS=detect_leaks=0' >> ~/.bashrc && \
-    echo '#include <bits/stdc++.h>' >> /tmp/precompile_header.hpp && \
-    mkdir -p /usr/local/include/procon_gch/bits/stdc++.h.gch/ && \
-    g++-12 -O0 -g3 -Wall -Wextra -std=gnu++23 -fsanitize=undefined,address -fno-omit-frame-pointer \
-    -DSCOLDEBUG -DFILEINPUT -DFILEOUTPUT \
-    -x c++-header \
-    /tmp/precompile_header.hpp \
-    -o /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23.gch && \
-    echo '#include <bits/stdc++.h>' | \
-    g++-12 -O2 -g3 -Wall -Wextra -std=gnu++23 -DFILEINPUT -DFILEOUTPUT \
-    -x c++-header \
-    /tmp/precompile_header.hpp \
-    -o /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23_optim.gch
+ENV PATH="${PATH}:/home/${USERNAME}/.local/bin"
