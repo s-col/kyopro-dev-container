@@ -22,7 +22,10 @@
                 "-I${workspaceFolder}",
                 "${file}"
             ],
-            "group": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            },
             "problemMatcher": []
         },
         {
@@ -48,7 +51,6 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
             },
             "problemMatcher": []
         },
@@ -113,6 +115,15 @@
             ],
             "group": "build",
             "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "test on oj",
+            "command": "oj t",
+            "group": {
+                "kind": "test",
+                "isDefault": true,
+            }
         }
     ]
 }

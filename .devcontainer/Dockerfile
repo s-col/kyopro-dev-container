@@ -17,7 +17,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
     libboost-dev \
     libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev curl \
-    libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev git && \
+    libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev git \
+    python3.11 python3.11-venv python3.11-dev python3-pip && \
     update-alternatives --install \
     /usr/bin/gcc gcc /usr/bin/gcc-12 90 \
     --slave /usr/bin/g++ g++ /usr/bin/g++-12 \
@@ -27,6 +28,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
 
 # 競プロで必要な設定などを実行
 RUN echo 'alias ttt='\''/usr/bin/time -f "time result\ncmd:%C\nreal %es\nuser %Us \nsys  %Ss \nmemory:%MKB \ncpu %P"'\' >> ~/.bashrc && \
+    echo 'alias python=python3.11' && \
     echo 'export ASAN_OPTIONS=detect_leaks=0' >> ~/.bashrc && \
     echo '#include <bits/stdc++.h>' >> /tmp/precompile_header.hpp && \
     mkdir -p /usr/local/include/procon_gch/bits/stdc++.h.gch/ && \
@@ -52,21 +54,12 @@ RUN groupadd -g $GID $GROUPNAME && \
     useradd -m -s /bin/bash -u $UID -g $GID $USERNAME
 USER $USERNAME
 
-# Python を Pyenv でインストール
-RUN curl https://pyenv.run | bash && \
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc && \
-    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc && \
-    echo 'eval "$(pyenv init -)"' >> ~/.bashrc && \
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile && \
-    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile && \
-    echo 'eval "$(pyenv init -)"' >> ~/.profile && \
-    export PYENV_ROOT="$HOME/.pyenv" && \
-    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH" && \
-    eval "$(pyenv init -)" && \
-    latest_python=$(pyenv install --list | grep -E '^\s*3.11' | tail -1 | tr -d '[:space:]') && \
-    pyenv install $latest_python && \
-    pyenv global $latest_python
-
+# Rust をインストール
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
+# パスの設定
 ENV PATH="${PATH}:/home/${USERNAME}/.local/bin"
+
+# oj のインストールとエイリアスの設定
+RUN pip install online-judge-tools && \
+    echo 'alias ojd="rm -rf test/ && oj d"' >> ~/.bashrc
