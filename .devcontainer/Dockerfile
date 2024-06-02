@@ -18,7 +18,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
     libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev curl \
     libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev git \
-    python3.11 python3.11-venv python3.11-dev python3-pip && \
+    python3.10 python3.10-venv python3.10-dev python3-pip && \
     update-alternatives --install \
     /usr/bin/gcc gcc /usr/bin/gcc-12 90 \
     --slave /usr/bin/g++ g++ /usr/bin/g++-12 \
@@ -26,10 +26,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# 競プロで必要な設定などを実行
-RUN echo 'alias ttt='\''/usr/bin/time -f "time result\ncmd:%C\nreal %es\nuser %Us \nsys  %Ss \nmemory:%MKB \ncpu %P"'\' >> ~/.bashrc && \
-    echo 'alias python=python3.11' && \
-    echo 'export ASAN_OPTIONS=detect_leaks=0' >> ~/.bashrc && \
+# プリコンパイル済みヘッダを生成
+RUN \
+    # ファイル出力あり, 最適化なし
     echo '#include <bits/stdc++.h>' >> /tmp/precompile_header.hpp && \
     mkdir -p /usr/local/include/procon_gch/bits/stdc++.h.gch/ && \
     g++-12 -O0 -g3 -Wall -Wextra -std=gnu++23 -fsanitize=undefined,address -fno-omit-frame-pointer \
@@ -38,12 +37,24 @@ RUN echo 'alias ttt='\''/usr/bin/time -f "time result\ncmd:%C\nreal %es\nuser %U
     /tmp/precompile_header.hpp \
     -o /tmp/g++12_gnu++23.gch && \
     mv /tmp/g++12_gnu++23.gch /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23.gch && \
-    echo '#include <bits/stdc++.h>' | \
+    # ファイル出力あり, 最適化あり
     g++-12 -O2 -g3 -Wall -Wextra -std=gnu++23 -DFILEINPUT -DFILEOUTPUT \
     -x c++-header \
     /tmp/precompile_header.hpp \
     -o /tmp/g++12_gnu++23_optim.gch && \
-    mv /tmp/g++12_gnu++23_optim.gch /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23_optim.gch
+    mv /tmp/g++12_gnu++23_optim.gch /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23_optim.gch && \
+    # ファイル出力なし, 最適化なし
+    g++-12 -O0 -g3 -Wall -Wextra -std=gnu++23 -fsanitize=undefined,address -fno-omit-frame-pointer -DSCOLDEBUG \
+    -x c++-header \
+    /tmp/precompile_header.hpp \
+    -o /tmp/g++12_gnu++23_stdio.gch && \
+    mv /tmp/g++12_gnu++23_stdio.gch /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23_stdio.gch && \
+    # ファイル出力なし, 最適化あり
+    g++-12 -O2 -g3 -Wall -Wextra -std=gnu++23 \
+    -x c++-header \
+    /tmp/precompile_header.hpp \
+    -o /tmp/g++12_gnu++23_stdio_optim.gch && \
+    mv /tmp/g++12_gnu++23_stdio_optim.gch /usr/local/include/procon_gch/bits/stdc++.h.gch/g++12_gnu++23_stdio_optim.gch
 
 # ユーザを作成
 ARG USERNAME="procon"
@@ -62,4 +73,7 @@ ENV PATH="${PATH}:/home/${USERNAME}/.local/bin"
 
 # oj のインストールとエイリアスの設定
 RUN pip install online-judge-tools && \
-    echo 'alias ojd="rm -rf test/ && oj d"' >> ~/.bashrc
+    echo 'alias ojd="rm -rf test/ && oj d"' >> /home/${USERNAME}/.bashrc && \
+    echo 'alias ttt='\''/usr/bin/time -f "time result\ncmd:%C\nreal %es\nuser %Us \nsys  %Ss \nmemory:%MKB \ncpu %P"'\' >> /home/${USERNAME}/.bashrc && \
+    echo 'alias python=python3.10' >> /home/${USERNAME}/.bashrc && \
+    echo 'export ASAN_OPTIONS=detect_leaks=0' >> /home/${USERNAME}/.bashrc
