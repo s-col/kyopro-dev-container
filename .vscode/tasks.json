@@ -119,7 +119,7 @@
         {
             "type": "shell",
             "label": "test on oj",
-            "command": "oj t",
+            "command": "oj t -N",
             "group": {
                 "kind": "test",
                 "isDefault": true,
